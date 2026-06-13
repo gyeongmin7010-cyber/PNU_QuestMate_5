@@ -1,0 +1,28 @@
+장소별 예시 코드 V6
+
+새벽벌도서관
+입장: QM-V6-LIBRARY-ENTRY
+퇴장: QM-V6-LIBRARY-EXIT
+현장문구: FOCUS
+
+금정회관/학생식당
+입장: QM-V6-MEAL-ENTRY
+퇴장: QM-V6-MEAL-EXIT
+현장문구: RICE
+
+공지 확인 부스
+입장: QM-V6-NOTICE-ENTRY
+퇴장: QM-V6-NOTICE-EXIT
+현장문구: INFO
+
+캠퍼스 히든스팟
+입장: QM-V6-HIDDEN-ENTRY
+퇴장: QM-V6-HIDDEN-EXIT
+현장문구: FIND
+
+팀 챌린지 존
+입장: QM-V6-TEAM-ENTRY
+퇴장: QM-V6-TEAM-EXIT
+현장문구: CREW
+
+오늘 현장코드는 앱에서 자동 생성됩니다. 예: LIB-0613

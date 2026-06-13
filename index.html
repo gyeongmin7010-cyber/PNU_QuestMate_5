@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PNU QuestMate V6.1</title>
+  <style>
+    :root{
+      --bg:#f5f7fb; --card:#ffffff; --ink:#142033; --muted:#697386; --line:#e6eaf1;
+      --blue:#244eea; --sky:#eaf0ff; --orange:#ff8a00; --green:#16a34a; --red:#dc2626;
+      --dark:#0f172a; --purple:#7c3aed;
+    }
+    *{box-sizing:border-box} body{margin:0;background:linear-gradient(180deg,#eef3ff,#f8fafc 32%,#ffffff);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans KR",Arial,sans-serif;color:var(--ink)}
+    a{color:inherit} .wrap{max-width:1180px;margin:0 auto;padding:22px 16px 80px}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:18px;align-items:stretch;margin-bottom:18px}
+    .panel{background:rgba(255,255,255,.92);border:1px solid var(--line);box-shadow:0 16px 42px rgba(15,23,42,.08);border-radius:28px;padding:22px;overflow:hidden}.heroMain{position:relative;background:radial-gradient(circle at top right,#c7d7ff 0,#f5f7ff 34%,#fff 75%)}
+    .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 11px;border:1px solid #dbe4ff;background:#f6f8ff;border-radius:999px;color:#244eea;font-weight:800;font-size:13px}.title{font-size:42px;line-height:1.08;margin:16px 0 10px;font-weight:950;letter-spacing:-1.4px}.subtitle{font-size:17px;color:#475569;line-height:1.6;margin:0;max-width:760px}.heroBtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.btn{border:0;border-radius:14px;padding:12px 15px;font-weight:900;cursor:pointer;background:#eef2ff;color:#1e3a8a}.btn.primary{background:linear-gradient(135deg,#244eea,#7c3aed);color:#fff}.btn.dark{background:#111827;color:#fff}.btn.warn{background:#fff7ed;color:#9a3412}.btn.good{background:#ecfdf5;color:#166534}.btn.danger{background:#fef2f2;color:#991b1b}.btn:disabled{opacity:.45;cursor:not-allowed}.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:18px}.kpi{background:#f8fafc;border:1px solid var(--line);border-radius:18px;padding:14px}.kpi b{font-size:24px}.kpi span{display:block;color:#64748b;font-size:12px;font-weight:800;margin-top:4px}.phone{background:#0f172a;color:#fff;border-radius:30px;padding:16px;min-height:100%;position:relative}.phoneTop{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}.pill{display:inline-flex;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,.12);font-size:12px;font-weight:800}.miniCard{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:13px;margin:10px 0}.progress{height:12px;border-radius:999px;background:#e2e8f0;overflow:hidden}.progress>i{display:block;height:100%;background:linear-gradient(90deg,#244eea,#16a34a);width:0}.phone .progress{background:rgba(255,255,255,.18)}
+    .tabs{position:sticky;top:0;z-index:2;background:rgba(245,247,251,.92);backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:22px;padding:8px;display:flex;gap:6px;overflow:auto;margin-bottom:18px}.tab{white-space:nowrap;border:0;background:transparent;padding:12px 13px;border-radius:16px;font-weight:900;color:#475569;cursor:pointer}.tab.active{background:#111827;color:#fff}.section{display:none}.section.active{display:block}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:18px;box-shadow:0 8px 24px rgba(15,23,42,.05)}.card h2,.card h3{margin:0 0 10px}.muted{color:#64748b;line-height:1.55}.list{display:grid;gap:10px}.item{background:#f8fafc;border:1px solid var(--line);border-radius:16px;padding:12px}.item strong{display:block;margin-bottom:5px}.item small{color:#64748b}.tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 9px;background:#eef2ff;color:#1e3a8a;font-size:12px;font-weight:900;margin:3px}.tag.red{background:#fef2f2;color:#991b1b}.tag.green{background:#ecfdf5;color:#166534}.tag.orange{background:#fff7ed;color:#9a3412}.tag.dark{background:#111827;color:#fff}.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field{display:grid;gap:7px;margin:10px 0}.field label{font-weight:900;font-size:13px}.input,select,textarea{width:100%;border:1px solid #d9e2ef;background:#fff;border-radius:14px;padding:12px 13px;font:inherit;outline:none}textarea{min-height:76px;resize:vertical}.statLine{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}.stampGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.stamp{aspect-ratio:1;border-radius:22px;background:#f8fafc;border:1px dashed #cbd5e1;display:grid;place-items:center;text-align:center;font-weight:950;color:#94a3b8}.stamp.on{background:linear-gradient(135deg,#eef2ff,#dcfce7);border-style:solid;color:#111827}.stamp .emoji{font-size:24px;display:block}.timeline{border-left:3px solid #dbe4ff;margin-left:10px;padding-left:15px;display:grid;gap:12px}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:20;background:#111827;color:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 18px 45px rgba(0,0,0,.22);display:none;max-width:90vw}.toast.show{display:block}.qrRow{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.qrBox{display:flex;gap:12px;align-items:center;background:#f8fafc;border:1px solid var(--line);border-radius:16px;padding:10px}.qrBox img{width:82px;height:82px;border-radius:10px;border:1px solid var(--line);background:white}.modal{position:fixed;inset:0;background:rgba(15,23,42,.62);display:none;align-items:center;justify-content:center;z-index:30;padding:16px}.modal.show{display:flex}.modalBody{background:#fff;border-radius:22px;max-width:560px;width:100%;padding:18px}.scanner{height:300px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#0f172a;color:#fff;display:grid;place-items:center;text-align:center;padding:16px}.diag{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:12px;background:#0f172a;color:#dbeafe;border-radius:16px;padding:12px;overflow:auto}.footer{margin-top:28px;color:#64748b;text-align:center}.noticeText{white-space:pre-wrap}.hidden{display:none!important}
+    @media (max-width:850px){.hero,.grid,.grid3,.split{grid-template-columns:1fr}.title{font-size:34px}.kpis{grid-template-columns:1fr 1fr}.stampGrid{grid-template-columns:repeat(5,1fr)}.qrRow{grid-template-columns:1fr}.wrap{padding:14px 12px 60px}.tabs{border-radius:18px}.tab{padding:10px 11px}.panel{border-radius:22px;padding:17px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="panel heroMain">
+        <span class="badge">🎮 PNU QuestMate V6.1 · 완성형 프로토타입</span>
+        <h1 class="title">부산대 생활정보를<br>AI 퀘스트로 바꾸는 앱</h1>
+        <p class="subtitle">식단·좌석현황·공지·학사일정을 한 화면에 모으고, AI가 오늘의 캠퍼스 미션을 추천한다. 수행 여부는 입장 QR·현장코드·체류시간·퇴장 QR로 확인하며, 스탬프는 하루 1개만 지급한다.</p>
+        <div class="heroBtns">
+          <button class="btn primary" onclick="loadLiveData()">실시간 정보 새로고침</button>
+          <button class="btn" onclick="go('quest')">AI 퀘스트 생성</button>
+          <button class="btn good" onclick="go('checkin')">QR 체크인</button>
+          <button class="btn warn" onclick="go('rewards')">리워드 보기</button>
+        </div>
+        <div class="kpis">
+          <div class="kpi"><b id="stampCount">0</b><span>누적 스탬프 / 25</span></div>
+          <div class="kpi"><b id="rankName">새싹</b><span>현재 등급</span></div>
+          <div class="kpi"><b id="todayLeft">1</b><span>오늘 남은 스탬프</span></div>
+        </div>
+      </div>
+      <aside class="phone">
+        <div class="phoneTop"><b>Quest Status</b><span class="pill" id="liveModePill">DEMO</span></div>
+        <div class="miniCard"><b>오늘 추천</b><p class="muted" id="todaySummary" style="color:#dbeafe;margin:8px 0 0">실시간 정보를 불러오면 오늘의 추천 퀘스트가 생성돼.</p></div>
+        <div class="miniCard"><div class="statLine"><span>만점 진행률</span><b id="phoneProgressText">0%</b></div><div class="progress"><i id="phoneProgress"></i></div></div>
+        <div class="miniCard"><b>스탬프 정책</b><p style="margin:8px 0 0;color:#dbeafe;line-height:1.5">하루 1개 · 동일 장소 하루 1회 · 입장/퇴장 QR · 현장코드 · 체류시간 인증</p></div>
+      </aside>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="home" onclick="go('home')">홈</button>
+      <button class="tab" data-tab="live" onclick="go('live')">실시간 정보</button>
+      <button class="tab" data-tab="quest" onclick="go('quest')">AI 퀘스트</button>
+      <button class="tab" data-tab="checkin" onclick="go('checkin')">QR 체크인</button>
+      <button class="tab" data-tab="stamps" onclick="go('stamps')">스탬프북</button>
+      <button class="tab" data-tab="rewards" onclick="go('rewards')">리워드</button>
+      <button class="tab" data-tab="admin" onclick="go('admin')">운영 설계</button>
+    </nav>
+
+    <section id="home" class="section active">
+      <div class="grid">
+        <div class="card">
+          <h2>프로젝트 한 줄 정의</h2>
+          <p class="muted">기존 부산대 앱이 정보를 조회하는 기능이라면, QuestMate는 정보를 <b>학생 맞춤형 활동 미션</b>으로 재구성하고 실제 수행 여부까지 인증하는 참여형 플랫폼이다.</p>
+          <div class="row"><span class="tag">식단</span><span class="tag">좌석현황</span><span class="tag">공지사항</span><span class="tag">학사일정</span><span class="tag green">AI 퀘스트</span><span class="tag orange">QR 인증</span><span class="tag dark">리워드</span></div>
+        </div>
+        <div class="card">
+          <h2>V6 핵심 정책</h2>
+          <div class="list">
+            <div class="item"><strong>스탬프 하루 1개</strong><small>25개 만점 기준, 빠른 보상 획득과 반복 인증을 방지.</small></div>
+            <div class="item"><strong>고난도 인증</strong><small>입장 QR → 현장코드 → 체류시간 → 퇴장 QR → 활동기록.</small></div>
+            <div class="item"><strong>실시간 정보 복원</strong><small>식단, 좌석, 공지, 학사일정 탭을 다시 포함.</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px">
+        <h2>발표용 차별점</h2>
+        <div class="grid3">
+          <div class="item"><strong>1. 정보 조회가 아니라 행동 추천</strong><small>공강·위치·공지·좌석을 조합해 오늘 할 일을 제안.</small></div>
+          <div class="item"><strong>2. 실제 수행 여부 확인</strong><small>QR과 시간 조건으로 단순 클릭 보상을 막음.</small></div>
+          <div class="item"><strong>3. 학교 리워드 연계 가능</strong><small>스탬프를 비교과 마일리지, 쿠폰, 굿즈 신청과 연결.</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="live" class="section">
+      <div class="card">
+        <div class="row" style="justify-content:space-between"><div><h2>실시간 학교 정보</h2><p class="muted">Netlify Functions가 공개 페이지를 읽어 목록을 가져온다. 함수 오류가 나도 화면이 깨지지 않도록 JSON 진단과 데모 데이터를 함께 표시한다.</p></div><button class="btn primary" onclick="loadLiveData()">새로고침</button></div>
+      </div>
+      <div class="grid" style="margin-top:14px">
+        <div class="card"><h3>🍚 식단</h3><div id="mealsList" class="list"></div></div>
+        <div class="card"><h3>🪑 좌석현황</h3><div id="seatsList" class="list"></div></div>
+        <div class="card"><h3>📣 공지사항</h3><div id="noticesList" class="list"></div></div>
+        <div class="card"><h3>📅 학사일정</h3><div id="academicList" class="list"></div></div>
+      </div>
+      <div class="card" style="margin-top:14px"><h3>연동 진단</h3><pre id="diagnostics" class="diag">아직 새로고침 전</pre></div>
+    </section>
+
+    <section id="quest" class="section">
+      <div class="grid">
+        <div class="card">
+          <h2>AI 퀘스트 생성</h2>
+          <div class="field"><label>현재 상황</label><select id="situation"><option>공강 2시간</option><option>시험기간</option><option>점심시간</option><option>신입생 캠퍼스 적응</option><option>팀프로젝트 준비</option><option>공지 확인이 밀림</option></select></div>
+          <div class="field"><label>기분/목표</label><select id="mood"><option>밥 먹고 공부하고 싶음</option><option>조용한 곳 필요</option><option>학교 정보를 빨리 정리하고 싶음</option><option>친구들과 같이 할 미션 필요</option><option>리워드 스탬프를 받고 싶음</option></select></div>
+          <div class="field"><label>전공/역할</label><select id="major"><option>공대/첨단소재</option><option>컴퓨터/AI</option><option>경영/사회</option><option>인문/어문</option><option>디자인/예술</option><option>자연과학</option></select></div>
+          <button class="btn primary" onclick="generateQuest()">오늘의 퀘스트 만들기</button>
+        </div>
+        <div class="card">
+          <h2>생성 결과</h2>
+          <div id="questResult" class="list"><div class="item"><strong>아직 생성 전</strong><small>실시간 정보를 먼저 새로고침하면 더 자연스러운 미션이 나온다.</small></div></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px"><h3>퀘스트 유형 예시</h3><div class="grid3"><div class="item"><strong>학식 + 좌석 미션</strong><small>식단 확인 → 가까운 식당 → 좌석 많은 열람실 추천.</small></div><div class="item"><strong>공지 퀴즈 미션</strong><small>공지 요약을 읽고 핵심 마감일 퀴즈 통과.</small></div><div class="item"><strong>팀 챌린지</strong><small>전공별 역할을 나누고 같은 팀 코드로 인증.</small></div></div></div>
+    </section>
+
+    <section id="checkin" class="section">
+      <div class="grid">
+        <div class="card">
+          <h2>고난도 QR 체크인</h2>
+          <p class="muted">스탬프는 하루 1개만 받을 수 있다. 발표용은 25초 체류, 실제 운영 모드는 10분 체류 조건으로 설명하면 된다.</p>
+          <div id="limitWarning" class="item"></div>
+          <div class="field"><label>미션 장소</label><select id="spotSelect"></select></div>
+          <div class="field"><label>운영 모드</label><select id="modeSelect"><option value="demo">발표용 데모: 25초 체류</option><option value="strict">실제 운영: 10분 체류</option></select></div>
+          <div class="split">
+            <div class="field"><label>입장 QR 코드</label><input id="entryCode" class="input" placeholder="QR 스캔 또는 코드 입력"></div>
+            <div class="field"><label>오늘 현장 코드</label><input id="dailyCode" class="input" placeholder="예: LIB-0613"></div>
+          </div>
+          <div class="field"><label>현장 확인 문구</label><input id="challenge" class="input" placeholder="장소에 붙은 문구 입력"></div>
+          <div class="row"><button class="btn" onclick="fillSpotCodes()">선택 장소 예시 코드 채우기</button><button class="btn dark" onclick="openScanner('entryCode')">카메라 QR 스캔</button><button class="btn primary" onclick="startVisit()">입장 인증 시작</button></div>
+        </div>
+        <div class="card">
+          <h2>퇴장 인증</h2>
+          <div id="visitBox" class="item"><strong>입장 인증 전</strong><small>입장 인증을 완료하면 체류 타이머가 표시된다.</small></div>
+          <div class="field"><label>퇴장 QR 코드</label><input id="exitCode" class="input" placeholder="퇴장 QR 스캔 또는 코드 입력"></div>
+          <div class="field"><label>활동 기록</label><textarea id="activityNote" placeholder="예: 새벽벌도서관에서 일반화학 과제 정리함"></textarea></div>
+          <div class="row"><button class="btn dark" onclick="openScanner('exitCode')">카메라 QR 스캔</button><button class="btn good" onclick="completeVisit()">퇴장 인증 후 스탬프 받기</button></div>
+        </div>
+      </div>
+      <div class="card" style="margin-top:14px"><h2>예시 QR 코드</h2><p class="muted">발표 때는 이 QR을 출력하거나 다른 기기에서 띄워 스캔하면 된다. 학교 실제 운영에서는 장소별 QR을 학교가 관리한다고 설명하면 된다.</p><div id="qrList" class="qrRow"></div></div>
+    </section>
+
+    <section id="stamps" class="section">
+      <div class="grid">
+        <div class="card"><h2>효원 스탬프북</h2><p class="muted">25개 만점. 하루 1개 제한이므로 최소 25일 이상 꾸준히 참여해야 만점이 된다.</p><div id="stampGrid" class="stampGrid"></div></div>
+        <div class="card"><h2>인증 로그</h2><div class="row"><button class="btn" onclick="downloadLogs()">인증 로그 JSON 다운로드</button><button class="btn danger" onclick="resetLocal()">로컬 기록 초기화</button></div><div id="logList" class="timeline" style="margin-top:14px"></div></div>
+      </div>
+    </section>
+
+    <section id="rewards" class="section">
+      <div class="grid">
+        <div class="card"><h2>등급·리워드</h2><div class="statLine"><span>현재 등급</span><b id="rewardRank">새싹</b></div><div class="statLine"><span>누적 스탬프</span><b id="rewardStamp">0 / 25</b></div><div class="progress" style="margin:12px 0"><i id="rewardProgress"></i></div><div id="rewardSteps" class="list"></div></div>
+        <div class="card"><h2>리워드 신청</h2><p class="muted">실제 운영에서는 즉시 지급이 아니라 월 단위 관리자 검토 후 비교과 마일리지, 쿠폰, 굿즈, 인증서 등으로 전환한다.</p><button class="btn primary" onclick="downloadRewardApplication()">리워드 신청서 JSON 다운로드</button><div class="item" style="margin-top:12px"><strong>남용 방지</strong><small>하루 1개, 동일 장소 하루 1회, 입장/퇴장 QR, 현장코드, 체류시간, 활동기록, 관리자 검토.</small></div></div>
+      </div>
+    </section>
+
+    <section id="admin" class="section">
+      <div class="grid">
+        <div class="card"><h2>학교 운영 설계</h2><div class="list"><div class="item"><strong>QR 발급 주체</strong><small>학생 개인이 QR을 붙이는 게 아니라 학교/부서가 장소별 QR과 현장코드를 발급.</small></div><div class="item"><strong>현장코드 갱신</strong><small>일 단위로 바뀌는 코드를 QR 옆에 게시해 캡처 재사용을 줄임.</small></div><div class="item"><strong>DB 저장</strong><small>실제 서비스에서는 서버 DB에 인증 로그를 저장하고 관리자 검토 후 리워드 지급.</small></div></div></div>
+        <div class="card"><h2>발표용 설명 문장</h2><p class="noticeText muted">QuestMate는 부산대 공개 정보를 단순 조회하는 앱이 아니라, AI가 학생 상황에 맞는 캠퍼스 퀘스트로 재구성하는 참여형 플랫폼입니다. 학생이 퀘스트를 실제 수행했는지는 입장 QR, 현장코드, 최소 체류시간, 퇴장 QR, 활동 기록으로 확인하며, 스탬프는 하루 1개만 지급해 리워드 남용을 방지했습니다.</p></div>
+      </div>
+      <div class="card" style="margin-top:14px"><h2>GitHub/Netlify 필수 구조</h2><pre class="diag">netlify/
+  functions/
+    pnu-data.js
+    checkin.js
+index.html
+netlify.toml
+package.json
+QR_PRINT_SHEET.html
+QR_CODES.txt
+README.md
+SECURITY.md</pre></div>
+    </section>
+
+    <div class="footer">PNU QuestMate V6.1 · 생활정보 + AI 퀘스트 + 하루 1개 고난도 스탬프 + 리워드 연계</div>
+  </div>
+
+  <div id="scannerModal" class="modal"><div class="modalBody"><div class="row" style="justify-content:space-between"><h3>QR 스캔</h3><button class="btn danger" onclick="closeScanner()">닫기</button></div><div id="reader" class="scanner">카메라 스캔은 HTTPS 배포 주소에서 작동한다. 카메라가 안 되면 코드를 직접 입력해도 된다.</div></div></div>
+  <div id="toast" class="toast"></div>
+  <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+  <script>
+    const SPOTS = [
+      {id:'library', name:'새벽벌도서관', emoji:'📚', entry:'QM-V6-LIBRARY-ENTRY', exit:'QM-V6-LIBRARY-EXIT', prefix:'LIB', challenge:'FOCUS', mission:'좌석현황 확인 후 학습 공간에서 25분 이상 집중'},
+      {id:'meal', name:'금정회관/학생식당', emoji:'🍚', entry:'QM-V6-MEAL-ENTRY', exit:'QM-V6-MEAL-EXIT', prefix:'MEAL', challenge:'RICE', mission:'오늘 식단 확인 후 메뉴 만족도 기록'},
+      {id:'notice', name:'공지 확인 부스', emoji:'📣', entry:'QM-V6-NOTICE-ENTRY', exit:'QM-V6-NOTICE-EXIT', prefix:'NOTI', challenge:'INFO', mission:'최신 공지 요약 확인 후 핵심 일정 정리'},
+      {id:'hidden', name:'캠퍼스 히든스팟', emoji:'🗺️', entry:'QM-V6-HIDDEN-ENTRY', exit:'QM-V6-HIDDEN-EXIT', prefix:'HIDE', challenge:'FIND', mission:'잘 알려지지 않은 캠퍼스 공간 방문 후 한 줄 후기'},
+      {id:'team', name:'팀 챌린지 존', emoji:'🤝', entry:'QM-V6-TEAM-ENTRY', exit:'QM-V6-TEAM-EXIT', prefix:'TEAM', challenge:'CREW', mission:'서로 다른 전공 2명 이상이 역할 분담 후 결과 작성'}
+    ];
+    const REWARDS = [
+      {need:5, label:'디지털 배지', desc:'효원 캠퍼스 적응 배지'},
+      {need:10, label:'쿠폰 추첨권', desc:'학식·카페 쿠폰 추첨 대상'},
+      {need:15, label:'굿즈 신청', desc:'학교 굿즈 교환/추첨 신청'},
+      {need:20, label:'마일리지 신청', desc:'비교과 마일리지 연계 검토 대상'},
+      {need:25, label:'레전드 인증', desc:'학기 우수 참여자 인증서 후보'}
+    ];
+    let state = { live:null, logs: JSON.parse(localStorage.getItem('qm_logs_v6')||'[]'), visit: JSON.parse(localStorage.getItem('qm_visit_v6')||'null') };
+    let scanner=null, scanTarget=null, timer=null;
+    function todayKey(){ return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date()); }
+    function mmdd(){ const p=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'2-digit',day:'2-digit'}).formatToParts(new Date()); const m=p.find(x=>x.type==='month').value; const d=p.find(x=>x.type==='day').value; return m+d; }
+    function dailyCode(spot){ return spot.prefix+'-'+mmdd(); }
+    function todayLogs(){ const t=todayKey(); return state.logs.filter(x=>x.date===t); }
+    function toast(msg){ const el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); setTimeout(()=>el.classList.remove('show'),3500); }
+    function go(id){ document.querySelectorAll('.section').forEach(s=>s.classList.toggle('active',s.id===id)); document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===id)); window.scrollTo({top:0,behavior:'smooth'}); }
+    function save(){ localStorage.setItem('qm_logs_v6',JSON.stringify(state.logs)); localStorage.setItem('qm_visit_v6',JSON.stringify(state.visit)); renderAll(); }
+    function rank(n){ if(n>=25) return '레전드'; if(n>=20) return '마스터'; if(n>=15) return '효원러'; if(n>=10) return '탐험가'; if(n>=5) return '적응러'; return '새싹'; }
+    function renderAll(){ renderHome(); renderStamps(); renderRewards(); renderLogs(); renderVisit(); renderLimit(); }
+    function renderHome(){ const n=Math.min(state.logs.length,25); const pct=Math.round(n/25*100); document.getElementById('stampCount').textContent=n; document.getElementById('rankName').textContent=rank(n); document.getElementById('todayLeft').textContent=Math.max(0,1-todayLogs().length); document.getElementById('phoneProgressText').textContent=pct+'%'; document.getElementById('phoneProgress').style.width=pct+'%'; }
+    function renderLimit(){ const el=document.getElementById('limitWarning'); if(!el) return; const left=Math.max(0,1-todayLogs().length); if(left===0){ el.innerHTML='<strong>오늘 스탬프 제한 완료</strong><small>하루 1개 제한으로 내일 다시 인증할 수 있다.</small>'; el.style.borderColor='#fecaca'; el.style.background='#fef2f2'; } else { el.innerHTML='<strong>오늘 인증 가능</strong><small>오늘 남은 스탬프: 1개. 입장/퇴장 QR과 체류시간을 통과해야 한다.</small>'; el.style.borderColor='#bbf7d0'; el.style.background='#f0fdf4'; }}
+    function renderStamps(){ const grid=document.getElementById('stampGrid'); if(!grid) return; grid.innerHTML=''; for(let i=0;i<25;i++){ const rec=state.logs[i]; const div=document.createElement('div'); div.className='stamp '+(rec?'on':''); div.innerHTML=rec?`<span><span class="emoji">${rec.emoji||'✅'}</span>${i+1}</span>`:`<span>${i+1}</span>`; grid.appendChild(div); } }
+    function renderRewards(){ const n=Math.min(state.logs.length,25), pct=n/25*100; document.getElementById('rewardRank').textContent=rank(n); document.getElementById('rewardStamp').textContent=n+' / 25'; document.getElementById('rewardProgress').style.width=pct+'%'; const box=document.getElementById('rewardSteps'); box.innerHTML=''; REWARDS.forEach(r=>{ const ok=n>=r.need; box.insertAdjacentHTML('beforeend',`<div class="item"><strong>${ok?'✅':'⬜'} ${r.need}개 · ${r.label}</strong><small>${r.desc}</small></div>`); }); }
+    function renderLogs(){ const box=document.getElementById('logList'); if(!box) return; if(!state.logs.length){ box.innerHTML='<div class="item"><strong>아직 인증 기록 없음</strong><small>QR 체크인을 완료하면 여기에 기록된다.</small></div>'; return; } box.innerHTML=state.logs.slice().reverse().map(x=>`<div class="item"><strong>${x.emoji||'✅'} ${x.spotName} · ${x.id}</strong><small>${new Date(x.issuedAt).toLocaleString('ko-KR')}<br>${escapeHtml(x.activityNote||'')}</small></div>`).join(''); }
+    function renderVisit(){ const box=document.getElementById('visitBox'); if(!box) return; if(!state.visit){ box.innerHTML='<strong>입장 인증 전</strong><small>입장 인증을 완료하면 체류 타이머가 표시된다.</small>'; return; } const left=Math.max(0, state.visit.startedAt + state.visit.waitSeconds*1000 - Date.now()); const s=Math.ceil(left/1000); const spot=SPOTS.find(x=>x.id===state.visit.spotId); box.innerHTML=`<strong>${spot?.emoji||'✅'} ${spot?.name||''} 입장 인증 완료</strong><small>남은 체류시간: ${s>0?s+'초':'퇴장 인증 가능'}<br>모드: ${state.visit.mode}</small>`; }
+    function init(){ const sel=document.getElementById('spotSelect'); sel.innerHTML=SPOTS.map(s=>`<option value="${s.id}">${s.emoji} ${s.name}</option>`).join(''); renderQRList(); renderAll(); loadLiveData(false); timer=setInterval(renderVisit,1000); }
+    function renderQRList(){ const box=document.getElementById('qrList'); box.innerHTML=''; SPOTS.forEach(s=>{ box.insertAdjacentHTML('beforeend',`<div class="qrBox"><img src="assets/qr/${s.id}_entry.png" alt="${s.name} 입장 QR"><div><b>${s.emoji} ${s.name} 입장</b><br><small>${s.entry}</small><br><button class="btn" onclick="document.getElementById('entryCode').value='${s.entry}'">입장코드 입력</button></div></div><div class="qrBox"><img src="assets/qr/${s.id}_exit.png" alt="${s.name} 퇴장 QR"><div><b>${s.emoji} ${s.name} 퇴장</b><br><small>${s.exit}</small><br><button class="btn" onclick="document.getElementById('exitCode').value='${s.exit}'">퇴장코드 입력</button></div></div>`); }); }
+    function fillSpotCodes(){ const s=SPOTS.find(x=>x.id===document.getElementById('spotSelect').value); document.getElementById('entryCode').value=s.entry; document.getElementById('dailyCode').value=dailyCode(s); document.getElementById('challenge').value=s.challenge; document.getElementById('exitCode').value=s.exit; document.getElementById('activityNote').value=s.mission; }
+    async function loadLiveData(show=true){
+      try{
+        const res=await fetch('/.netlify/functions/pnu-data?ts='+Date.now(),{cache:'no-store'});
+        const raw=await res.text();
+        let data;
+        try{ data=raw ? JSON.parse(raw) : null; }
+        catch(parseError){ data=null; }
+        if(!data || typeof data!=='object'){
+          throw new Error(`함수 응답이 JSON이 아님 · HTTP ${res.status} · body ${raw.length}자`);
+        }
+        state.live=data;
+        renderLive();
+        document.getElementById('liveModePill').textContent=((data.mode||'demo')+' · '+(data.version||'v6')).toUpperCase();
+        if(show) toast(data.mode==='live' ? '실시간 정보 새로고침 완료' : '데모 데이터 표시: 연동 진단 확인');
+      }catch(e){
+        state.live=demoData('function error: '+e.message);
+        renderLive();
+        document.getElementById('liveModePill').textContent='DEMO · FUNCTION ERROR';
+        if(show) toast('실시간 연동 실패: 진단창 확인');
+      }
+    }
+    function demoData(err){ return {mode:'demo', meals:[{title:'데모: 오늘 학식 확인 후 금정회관 미션 추천'}], seats:[{title:'데모: 새벽벌도서관 좌석현황 확인'}], notices:[{title:'데모: 장학/비교과 공지 요약 확인'}], academic:[{title:'데모: 학사일정 확인 후 마감일 정리'}], diagnostics:{error:err}}; }
+    function renderLive(){ const d=state.live||demoData('not loaded'); const keys=['meals','seats','notices','academic']; const ids=['mealsList','seatsList','noticesList','academicList']; keys.forEach((k,i)=>{ const el=document.getElementById(ids[i]); el.innerHTML=(d[k]||[]).slice(0,10).map((x,idx)=>`<div class="item"><strong>${idx+1}. ${escapeHtml(x.title||x.name||String(x))}</strong><small>${escapeHtml(x.meta||x.source||'')}</small></div>`).join('') || '<div class="item"><strong>데이터 없음</strong><small>공개 페이지 구조 변경 또는 일시 오류</small></div>'; }); document.getElementById('diagnostics').textContent=JSON.stringify(d.diagnostics||{},null,2); const firstMeal=(d.meals&&d.meals[0]?.title)||'식단 확인'; const firstSeat=(d.seats&&d.seats[0]?.title)||'좌석 확인'; document.getElementById('todaySummary').textContent=`${firstMeal.slice(0,38)} · ${firstSeat.slice(0,34)} 정보를 바탕으로 퀘스트 생성 가능`; }
+    function generateQuest(){ const sit=document.getElementById('situation').value, mood=document.getElementById('mood').value, major=document.getElementById('major').value; const d=state.live||demoData('not loaded'); const seat=(d.seats?.[0]?.title||'좌석현황 확인'); const meal=(d.meals?.[0]?.title||'식단 확인'); const notice=(d.notices?.[0]?.title||'공지 확인'); const spot=sit.includes('점심')?SPOTS[1]:sit.includes('공지')?SPOTS[2]:sit.includes('팀')?SPOTS[4]:SPOTS[0]; const result=document.getElementById('questResult'); result.innerHTML=`<div class="item"><strong>${spot.emoji} 오늘의 추천 퀘스트: ${spot.name}</strong><small>상황: ${sit} · 목표: ${mood} · 역할: ${major}</small></div><div class="item"><strong>1단계 · 정보 확인</strong><small>${meal}<br>${seat}<br>${notice}</small></div><div class="item"><strong>2단계 · 실제 수행</strong><small>${spot.mission}</small></div><div class="item"><strong>3단계 · 고난도 인증</strong><small>입장 QR, 현장코드(${dailyCode(spot)}), 문구(${spot.challenge}), 체류시간, 퇴장 QR을 통과하면 하루 1개 스탬프 지급.</small></div>`; }
+    async function startVisit(){ const spot=SPOTS.find(x=>x.id===document.getElementById('spotSelect').value); if(todayLogs().length>=1){ toast('오늘은 이미 스탬프 1개를 받았어. 내일 다시 가능.'); return; } const payload={action:'start',spotId:spot.id,entryCode:document.getElementById('entryCode').value,dailyCode:document.getElementById('dailyCode').value,challenge:document.getElementById('challenge').value,mode:document.getElementById('modeSelect').value,logs:state.logs}; const out=await postCheckin(payload); if(out.ok){ state.visit=out.visit; save(); toast(out.message); } else toast(out.message||'입장 인증 실패'); }
+    async function completeVisit(){ if(!state.visit){ toast('먼저 입장 인증을 완료해야 해.'); return; } const payload={action:'complete',visit:state.visit,exitCode:document.getElementById('exitCode').value,activityNote:document.getElementById('activityNote').value,logs:state.logs}; const out=await postCheckin(payload); if(out.ok){ state.logs.push(out.record); state.visit=null; save(); toast('스탬프 1개 획득! 오늘은 더 이상 받을 수 없어.'); go('stamps'); } else toast(out.message||'퇴장 인증 실패'); }
+    async function postCheckin(payload){ try{ const res=await fetch('/.netlify/functions/checkin',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(payload)}); return await res.json(); } catch(e){ return {ok:false,message:'체크인 함수 연결 실패: '+e.message}; } }
+    function downloadLogs(){ downloadJSON('questmate_v6_logs.json',{exportedAt:new Date().toISOString(),logs:state.logs}); }
+    function downloadRewardApplication(){ downloadJSON('questmate_v6_reward_application.json',{exportedAt:new Date().toISOString(),rank:rank(state.logs.length),stamps:state.logs.length,eligible:REWARDS.filter(r=>state.logs.length>=r.need),logs:state.logs}); }
+    function downloadJSON(name,obj){ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([JSON.stringify(obj,null,2)],{type:'application/json'})); a.download=name; a.click(); URL.revokeObjectURL(a.href); }
+    function resetLocal(){ if(confirm('로컬 기록을 초기화할까?')){ state.logs=[]; state.visit=null; save(); } }
+    function escapeHtml(s){ return String(s||'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m])); }
+    async function openScanner(target){ scanTarget=target; document.getElementById('scannerModal').classList.add('show'); const reader=document.getElementById('reader'); reader.innerHTML='카메라 준비 중...'; if(!window.Html5Qrcode){ reader.innerHTML='스캐너 라이브러리 로드 실패. 코드를 직접 입력해도 된다.'; return; } try{ scanner=new Html5Qrcode('reader'); await scanner.start({facingMode:'environment'},{fps:10,qrbox:220}, txt=>{ document.getElementById(scanTarget).value=txt; toast('QR 스캔 완료: '+txt); closeScanner(); }); }catch(e){ reader.innerHTML='카메라 접근 실패. HTTPS 주소에서 권한을 허용하거나 코드를 직접 입력해도 된다.<br><br>'+escapeHtml(e.message); } }
+    async function closeScanner(){ document.getElementById('scannerModal').classList.remove('show'); if(scanner){ try{ await scanner.stop(); await scanner.clear(); }catch(e){} scanner=null; } }
+    init();
+  </script>
+</body>
+</html>
